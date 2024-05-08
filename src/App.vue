@@ -1,12 +1,10 @@
 <template>
   <div>
     <h1>SVG测试</h1>
-    <!-- <svg-icon name="phone"></svg-icon> -->
+    <svg-icon name="phone" />
   </div>
 </template>
 
-<script setup lang="ts">
-// import SvgIcon from '@/components/SvgIcon/index.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

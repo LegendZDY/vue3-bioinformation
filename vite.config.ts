@@ -18,4 +18,9 @@ export default defineConfig({
       '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src
     },
   },
+  server: {
+    host: '192.168.1.15', // 主机地址
+    port: 3000, // 端口号
+    open: true, // 启动时是否打开浏览器
+  },
 })
