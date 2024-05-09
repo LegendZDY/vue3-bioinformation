@@ -4,7 +4,7 @@ import path from 'path'
 // 引入svg插件
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // 引入mock插件
-import {viteMockServe} from 'vite-plugin-mock'
+import { viteMockServe } from 'vite-plugin-mock'
 
 export default defineConfig(({ command }) => {
   return {
