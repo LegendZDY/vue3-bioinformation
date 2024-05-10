@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>测试代码</h1>
+    <h1>测试axios二次封装</h1>
   </div>
 </template>
 
