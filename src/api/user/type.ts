@@ -17,14 +17,14 @@ export interface loginResponseDate {
 
 //获取用户信息接口返回数据类型
 interface userInfo {
-  userId: number,
-  avatar: string,
-  username: string,
-  password: string,
-  desc: string,
-  roles: string[],
-  buttons: string[],
-  routes: string[],
+  userId: number
+  avatar: string
+  username: string
+  password: string
+  desc: string
+  roles: string[]
+  buttons: string[]
+  routes: string[]
   token: string
 }
 
