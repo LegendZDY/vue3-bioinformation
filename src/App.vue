@@ -1,15 +1,16 @@
 <template>
   <div>
-    <h1>测试axios二次封装</h1>
+    <h1>App根组件</h1>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { reqLogin } from './api/user'
 
-<style scoped lang="scss">
-div {
-  h1 {
-    color: $base-color;
-  }
-}
-</style>
+onMounted(() => {
+  reqLogin({ username: 'admin', password: '111111' })
+})
+</script>
+
+<style scoped lang="scss"></style>
