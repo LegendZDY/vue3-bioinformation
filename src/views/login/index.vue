@@ -81,7 +81,6 @@ const Login = async () => {
       type: 'success',
       message: '欢迎回来',
       title: `HI, ${getTime()}好`,
-    
     })
     //设置loading状态
     loading.value = false
@@ -92,7 +91,6 @@ const Login = async () => {
     ElMessage.error(error.message)
   }
 }
-
 </script>
 
 <style scoped lang="scss">

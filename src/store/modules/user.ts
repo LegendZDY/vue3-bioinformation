@@ -23,7 +23,7 @@ let useUserStore = defineStore('user', {
       //登录成功后，将token存入localStorage
       //登录失败后，提示错误信息
       if (result.code == 200) {
-        this.token = (result.data.token as string)
+        this.token = result.data.token as string
         //本地存储token，持久化
         SET_TOKEN(result.data.token as string)
         //返回true表示登录成功
