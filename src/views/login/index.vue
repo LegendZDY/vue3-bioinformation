@@ -8,13 +8,31 @@
             <h1>Hello</h1>
             <h2>欢迎登录</h2>
             <el-form-item>
-              <el-input :prefix-icon="User" v-model="loginForm.username" placeholder="请输入用户名"></el-input>
+              <el-input
+                :prefix-icon="User"
+                v-model="loginForm.username"
+                placeholder="请输入用户名"
+              ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password placeholder="请输入密码"></el-input>
+              <el-input
+                type="password"
+                :prefix-icon="Lock"
+                v-model="loginForm.password"
+                show-password
+                placeholder="请输入密码"
+              ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button class="login_btn" type="primary" size="default" @click="Login">登录</el-button>
+              <el-button
+                :loading="loading"
+                class="login_btn"
+                type="primary"
+                size="default"
+                @click="Login"
+              >
+                登录
+              </el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -24,19 +42,56 @@
 </template>
 
 <script setup lang="ts">
-import { User, Lock } from '@element-plus/icons-vue';
+import { User, Lock } from '@element-plus/icons-vue'
 //收集账号与密码的数据
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElNotification } from 'element-plus'
+//引用获取当前时间的函数
+import { getTime } from '@/utils/time'
+//引用用户相关的小仓库
+import useUserStore from '@/store/modules/user'
+
+let userStore = useUserStore()
+//获取路由器
+let $router = useRouter()
+//定义loading状态
+const loading = ref(false)
+
+//收集账号与密码的数据
 let loginForm = reactive({
   username: 'admin',
-  password: '111111'
-});
+  password: '111111',
+})
 //登录按钮回调
-const Login = () => {
+const Login = async () => {
+  //设置loading状态
+  loading.value = true
   //点击登录按钮后要干什么
   //1. 通知仓库发登录请求
+  //2. 请求成功后跳转到主页
+  //3. 请求失败后提示错误信息
+  try {
+    //保证登录成功
+    await userStore.userLogin(loginForm)
+    //跳转到主页
+    $router.push('/')
+    //提示成功信息
+    ElNotification({
+      type: 'success',
+      message: '欢迎回来',
+      title: `HI, ${getTime()}好`,
+    
+    })
+    //设置loading状态
+    loading.value = false
+  } catch (error) {
+    //登录失败
+    loading.value = false
+    //提示错误信息
+    ElMessage.error(error.message)
+  }
 }
-
 
 </script>
 
@@ -53,17 +108,17 @@ const Login = () => {
     background: url('@/assets/images/login_form.png') no-repeat;
     background-size: cover;
     padding: 40px;
-    h1{
-        font-size: 40px;
-        color: #fff;
-    };
-    h2{
-        font-size: 20px;
-        color: #fff;
-        margin: 20px 0px;
+    h1 {
+      font-size: 40px;
+      color: #fff;
     }
-    .login_btn{
-        width: 100%;
+    h2 {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px 0px;
+    }
+    .login_btn {
+      width: 100%;
     }
   }
 }

@@ -13,6 +13,8 @@ import globalComponents from '@/components'
 import '@/styles/index.scss'
 // 引入路由对象
 import router from '@/router'
+//引入仓库
+import pinia from '@/store'
 
 // 获取应用实例对象
 const app = createApp(App)
@@ -24,7 +26,9 @@ app.use(ElementPlus, {
 app.use(globalComponents)
 // 注册路由
 app.use(router)
-
+// 注册仓库
+app.use(pinia)
+// 注册中文语言包
 
 // // 测试代码：测试假的接口能否使用
 // import axios from 'axios'
