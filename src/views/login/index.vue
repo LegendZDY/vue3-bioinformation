@@ -4,7 +4,12 @@
       <el-row>
         <el-col :span="12" :xs="0">占位的位置</el-col>
         <el-col :span="12" :xs="24">
-          <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
+          <el-form
+            class="login_form"
+            :model="loginForm"
+            :rules="rules"
+            ref="loginForms"
+          >
             <h1>Hello</h1>
             <h2>欢迎登录</h2>
             <el-form-item prop="username">
@@ -99,7 +104,12 @@ const Login = async () => {
 const rules = {
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 3, max: 10, message: '用户名长度在 3 到 10 个字符', trigger: 'blur' },
+    {
+      min: 3,
+      max: 10,
+      message: '用户名长度在 3 到 10 个字符',
+      trigger: 'blur',
+    },
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
