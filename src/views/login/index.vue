@@ -4,23 +4,21 @@
       <el-row>
         <el-col :span="12" :xs="0">占位的位置</el-col>
         <el-col :span="12" :xs="24">
-          <el-form class="login_form">
+          <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
             <h1>Hello</h1>
             <h2>欢迎登录</h2>
-            <el-form-item>
+            <el-form-item prop="username">
               <el-input
                 :prefix-icon="User"
                 v-model="loginForm.username"
-                placeholder="请输入用户名"
               ></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item prop="password">
               <el-input
                 type="password"
                 :prefix-icon="Lock"
                 v-model="loginForm.password"
                 show-password
-                placeholder="请输入密码"
               ></el-input>
             </el-form-item>
             <el-form-item>
@@ -53,6 +51,8 @@ import { getTime } from '@/utils/time'
 import useUserStore from '@/store/modules/user'
 
 let userStore = useUserStore()
+//获取el-form组件
+let loginForms = ref()
 //获取路由器
 let $router = useRouter()
 //定义loading状态
@@ -65,6 +65,9 @@ let loginForm = reactive({
 })
 //登录按钮回调
 const Login = async () => {
+  //获取表单验证结果
+  await loginForms.value.validate()
+
   //设置loading状态
   loading.value = true
   //点击登录按钮后要干什么
@@ -90,6 +93,18 @@ const Login = async () => {
     //提示错误信息
     ElMessage.error(error.message)
   }
+}
+
+//定义表单校验需要配置对象
+const rules = {
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur' },
+    { min: 3, max: 10, message: '用户名长度在 3 到 10 个字符', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' },
+  ],
 }
 </script>
 
