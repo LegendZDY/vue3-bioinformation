@@ -123,7 +123,6 @@ const validatePassword = (rule, value, callback) => {
   }
 }
 
-
 //定义表单校验需要配置对象
 const rules = {
   username: [
@@ -141,7 +140,6 @@ const rules = {
     // { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' },
     { trigger: 'change', validator: validatePassword },
   ],
-  
 }
 </script>
 
