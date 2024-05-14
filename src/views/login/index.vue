@@ -100,21 +100,48 @@ const Login = async () => {
   }
 }
 
+//自定义验证用户名的函数
+const validateUsername = (rule, value, callback) => {
+  //rule为校验规则，value为输入的值，callback为回调函数
+  //用户名不能包含特殊字符
+  const reg = /^[a-zA-Z0-9]+$/
+  if (!reg.test(value)) {
+    callback(new Error('用户名不能包含特殊字符'))
+  } else {
+    callback()
+  }
+}
+
+const validatePassword = (rule, value, callback) => {
+  //rule为校验规则，value为输入的值，callback为回调函数
+  //用户名不能包含特殊字符
+  const reg = /^[a-zA-Z0-9]+$/
+  if (!reg.test(value)) {
+    callback(new Error('用户名不能包含特殊字符'))
+  } else {
+    callback()
+  }
+}
+
+
 //定义表单校验需要配置对象
 const rules = {
   username: [
-    { required: true, message: '请输入用户名', trigger: 'blur' },
-    {
-      min: 3,
-      max: 10,
-      message: '用户名长度在 3 到 10 个字符',
-      trigger: 'blur',
-    },
+    // { required: true, message: '请输入用户名', trigger: 'blur' },
+    // {
+    //   min: 3,
+    //   max: 10,
+    //   message: '用户名长度在 3 到 10 个字符',
+    //   trigger: 'blur',
+    // },
+    { trigger: 'change', validator: validateUsername },
   ],
   password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' },
+    // { required: true, message: '请输入密码', trigger: 'blur' },
+    // { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' },
+    { trigger: 'change', validator: validatePassword },
   ],
+  
 }
 </script>
 
