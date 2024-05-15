@@ -1,7 +1,15 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider">123</div>
+    <div class="layout_slider">
+      <Logo></Logo>
+      <!-- 滚动组件 -->
+      <el-scrollbar class="scrollbar">
+        <el-menu>
+          <el-menu-item index="1">首页</el-menu-item>
+        </el-menu>
+      </el-scrollbar>
+    </div>
     <!-- 顶部导航 -->
     <div class="layout_tabbar">456</div>
     <!-- 内容区域 -->
@@ -9,7 +17,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Logo from "./logo/index.vue";
+</script>
 
 <style scoped lang="scss">
 .layout_container {
@@ -19,6 +29,10 @@
     width: $base-menu-width;
     height: 100vh;
     background: $base-menu-background;
+    .scrollbar {
+      width: 100%;
+      height: calc(100vh - $base-menu-logo-height);
+    }
   }
   .layout_tabbar {
     position: fixed;
