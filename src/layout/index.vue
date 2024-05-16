@@ -5,8 +5,9 @@
       <Logo></Logo>
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
-        <el-menu>
-          <el-menu-item index="1">首页</el-menu-item>
+        <el-menu background-color="#001529" text-color="white">
+          <!-- 根据路由动态生成菜单 -->
+          <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
@@ -18,7 +19,13 @@
 </template>
 
 <script setup lang="ts">
+//引入左侧菜单logo子组件
 import Logo from './logo/index.vue'
+//引入菜单子组件
+import Menu from './menu/index.vue'
+//获取用户相关的小仓库
+import useUserStore from '@/store/modules/user'
+let userStore = useUserStore()
 </script>
 
 <style scoped lang="scss">
