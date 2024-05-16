@@ -17,13 +17,16 @@
         <span>{{ item.children[0].meta.title }}</span>
       </template>
     </el-menu-item>
-    <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.path">
-        <!-- 有多个子路由，显示标题 -->
-        <template #title>
-          <span>标&nbsp;</span>
-          <span>{{ item.meta.title }}</span>
-        </template>
-        <Menu :menuList="item.children"></Menu>
+    <el-sub-menu
+      v-if="item.children && item.children.length > 1"
+      :index="item.path"
+    >
+      <!-- 有多个子路由，显示标题 -->
+      <template #title>
+        <span>标&nbsp;</span>
+        <span>{{ item.meta.title }}</span>
+      </template>
+      <Menu :menuList="item.children"></Menu>
     </el-sub-menu>
   </template>
 </template>
@@ -34,7 +37,7 @@ defineProps(['menuList'])
 </script>
 <script lang="ts">
 export default {
-  name: 'Menu'
+  name: 'Menu',
 }
 </script>
 
