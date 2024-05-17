@@ -7,6 +7,7 @@ export const constantRoutes = [
     component: () => import('@/views/login/index.vue'), //路由组件
     meta: {
       title: '登录', //页面标题
+      hidden: true, //是否隐藏路由
     },
   },
   {
@@ -15,6 +16,7 @@ export const constantRoutes = [
     component: () => import('@/layout/index.vue'),
     meta: {
       title: 'layout',
+      hidden: false,
     },
     children: [
       {
@@ -22,6 +24,7 @@ export const constantRoutes = [
         component: () => import('@/views/home/index.vue'),
         meta: {
           title: '首页',
+          hidden: false,
         },
       },
       {
@@ -29,6 +32,7 @@ export const constantRoutes = [
         component: () => import('@/views/home/index.vue'),
         meta: {
           title: '生物信息分析',
+          hidden: false,
         },
       },
     ],
@@ -39,6 +43,7 @@ export const constantRoutes = [
     component: () => import('@/views/404/index.vue'),
     meta: {
       title: '404', //页面标题
+      hidden: true, //是否隐藏路由
     },
   },
   {
@@ -47,6 +52,7 @@ export const constantRoutes = [
     redirect: '/404',
     meta: {
       title: '任意路由', //页面标题
+      hidden: true, //是否隐藏路由
     },
   },
 ]
