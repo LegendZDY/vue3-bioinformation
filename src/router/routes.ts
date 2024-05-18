@@ -8,7 +8,7 @@ export const constantRoutes = [
     meta: {
       title: '登录', //页面标题
       hidden: true, //是否隐藏路由
-      icon: 'Promotion'
+      icon: 'Promotion',
     },
   },
   {
@@ -18,7 +18,7 @@ export const constantRoutes = [
     meta: {
       title: 'layout',
       hidden: true,
-      icon: 'Avatar'
+      icon: 'Avatar',
     },
     redirect: '/home',
     children: [
@@ -28,19 +28,19 @@ export const constantRoutes = [
         meta: {
           title: '首页',
           hidden: false,
-          icon: 'HomeFilled'
+          icon: 'HomeFilled',
         },
       },
     ],
   },
   {
     path: '/screen',
-    name:'Screen',
+    name: 'Screen',
     component: () => import('@/views/screen/index.vue'),
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon: 'Platform'
+      icon: 'Platform',
     },
   },
   {
@@ -50,7 +50,7 @@ export const constantRoutes = [
     meta: {
       title: '权限管理',
       hidden: false,
-      icon: 'Lock'
+      icon: 'Lock',
     },
     children: [
       {
@@ -60,7 +60,7 @@ export const constantRoutes = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon: 'User'
+          icon: 'User',
         },
       },
       {
@@ -70,7 +70,7 @@ export const constantRoutes = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon: 'UserFilled'
+          icon: 'UserFilled',
         },
       },
       {
@@ -80,7 +80,7 @@ export const constantRoutes = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon: 'Promotion'
+          icon: 'Promotion',
         },
       },
     ],
@@ -92,7 +92,7 @@ export const constantRoutes = [
     meta: {
       title: '商品管理',
       hidden: false,
-      icon: 'Goods'
+      icon: 'Goods',
     },
     children: [
       {
@@ -102,7 +102,7 @@ export const constantRoutes = [
         meta: {
           title: '品牌管理',
           hidden: false,
-          icon: 'ShoppingCartFull'
+          icon: 'ShoppingCartFull',
         },
       },
       {
@@ -112,7 +112,7 @@ export const constantRoutes = [
         meta: {
           title: '属性管理',
           hidden: false,
-          icon: 'ChromeFilled'
+          icon: 'ChromeFilled',
         },
       },
       {
@@ -122,7 +122,7 @@ export const constantRoutes = [
         meta: {
           title: 'SPU管理',
           hidden: false,
-          icon: 'Calendar'
+          icon: 'Calendar',
         },
       },
       {
@@ -132,10 +132,9 @@ export const constantRoutes = [
         meta: {
           title: 'SKU管理',
           hidden: false,
-          icon: 'Orange'
+          icon: 'Orange',
         },
       },
-
     ],
   },
   {
@@ -145,7 +144,7 @@ export const constantRoutes = [
     meta: {
       title: '404', //页面标题
       hidden: true, //是否隐藏路由
-      icon: 'DocumentDelete'
+      icon: 'DocumentDelete',
     },
   },
   {
@@ -155,7 +154,7 @@ export const constantRoutes = [
     meta: {
       title: '任意路由', //页面标题
       hidden: true, //是否隐藏路由
-      icon: 'DataLine'
+      icon: 'DataLine',
     },
   },
 ]

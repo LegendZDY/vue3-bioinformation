@@ -5,7 +5,11 @@
       <Logo></Logo>
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#001529" text-color="white" :default-active="route.path">
+        <el-menu
+          background-color="#001529"
+          text-color="white"
+          :default-active="route.path"
+        >
           <!-- 根据路由动态生成菜单 -->
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>

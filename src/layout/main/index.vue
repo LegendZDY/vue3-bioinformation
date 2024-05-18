@@ -17,7 +17,7 @@
   opacity: 0;
 }
 .fade-enter-active {
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 .fade-enter-to {
   opacity: 1;

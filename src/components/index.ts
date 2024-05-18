@@ -13,7 +13,7 @@ export default {
   install(app) {
     Object.keys(allGlobalComponent).forEach((key) => {
       app.component(key, allGlobalComponent[key])
-    });
+    })
     // 注册element-plus提供的全部图标组件
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
       app.component(key, component)
