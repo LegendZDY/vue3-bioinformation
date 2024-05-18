@@ -46,6 +46,12 @@ let userStore = useUserStore()
 const route = useRoute()
 </script>
 
+<script lang="ts">
+export default {
+  name: 'Layout',
+}
+</script>
+
 <style scoped lang="scss">
 .layout_container {
   width: 100%;
