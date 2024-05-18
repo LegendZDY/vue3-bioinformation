@@ -1,18 +1,18 @@
 <template>
   <div class="tabbar">
     <div class="tabbar-left">
-      <Breadcrumb/>
+      <Breadcrumb />
     </div>
 
     <div class="tabbar-right">
-      <Setting/>
+      <Setting />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Breadcrumb from "./breadcrumb/index.vue";
-import Setting from "./setting/index.vue";
+import Breadcrumb from './breadcrumb/index.vue'
+import Setting from './setting/index.vue'
 </script>
 
 <style scoped lang="scss">
