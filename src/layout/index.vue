@@ -1,16 +1,18 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider" :class="{ 'fold': LayOutSettingStore.fold?true:false }">
+    <div
+      class="layout_slider"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
       <Logo></Logo>
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <el-menu
+          :collapse="LayOutSettingStore.fold ? true : false"
           background-color="#001529"
           text-color="white"
           :default-active="route.path"
-          :collapse="LayOutSettingStore.fold?true:false"
-          :collapse-transition="false"
         >
           <!-- 根据路由动态生成菜单 -->
           <Menu :menuList="userStore.menuRoutes"></Menu>
@@ -18,12 +20,18 @@
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar" :class="{ 'fold': LayOutSettingStore.fold?true:false }">
+    <div
+      class="layout_tabbar"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
       <!-- layout组件顶部导航tabbar -->
       <Tabbar></Tabbar>
     </div>
     <!-- 内容区域 -->
-    <div class="layout_main" :class="{ 'fold': LayOutSettingStore.fold?true:false }">
+    <div
+      class="layout_main"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
       <Main></Main>
     </div>
   </div>
@@ -67,10 +75,13 @@ export default {
     width: $base-menu-width;
     height: 100vh;
     background: $base-menu-background;
-    transition: all 0.3s;
+    transition: all 0.2s;
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base-menu-logo-height);
+      .el-menu {
+        border-right: none;
+      }
     }
 
     &.fold {
@@ -83,7 +94,7 @@ export default {
     height: $base-tabbar-height;
     top: 0;
     left: $base-menu-width;
-    transition: all 0.3s;
+    transition: all 0.2s;
     &.fold {
       width: calc(100% - #{$base-menu-min-width});
       left: $base-menu-min-width;
@@ -97,7 +108,7 @@ export default {
     top: $base-tabbar-height;
     left: $base-menu-width;
     padding: 20px;
-    transition: all 0.3s;
+    transition: all 0.2s;
     &.fold {
       width: calc(100% - $base-menu-min-width);
       left: $base-menu-min-width;
