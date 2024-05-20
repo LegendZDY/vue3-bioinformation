@@ -1,6 +1,16 @@
 <template>
-  <el-button size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
-  <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
+  <el-button
+    size="small"
+    icon="Refresh"
+    circle
+    @click="updateRefresh"
+  ></el-button>
+  <el-button
+    size="small"
+    icon="FullScreen"
+    circle
+    @click="fullScreen"
+  ></el-button>
   <el-button size="small" icon="Setting" circle></el-button>
   <img src="/logo.png" style="width: 24px; height: 24px; margin: 0 10px" />
   <!-- 退出登录的下拉菜单 -->
@@ -30,13 +40,12 @@ const updateRefresh = () => {
 const fullScreen = () => {
   //DOM对象一个属性：可以用来判断当前是否处于全屏状态，如果是，则返回true，否则返回null
   let full = document.fullscreenElement
-  if(!full){
+  if (!full) {
     document.documentElement.requestFullscreen()
-  }else{
+  } else {
     document.exitFullscreen()
   }
 }
-
 </script>
 
 <script lang="ts">

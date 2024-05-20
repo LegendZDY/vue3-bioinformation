@@ -20,14 +20,16 @@ import { ref, watch, nextTick } from 'vue'
 const flag = ref(false)
 
 //监听仓库内部的数据变化，如果变化则刷新页面
-watch(() => layOutSettingStore.refresh, () => {
-  //刷新页面
-  flag.value =!flag.value
-  nextTick(() => {
-    flag.value =!flag.value
-  })
-})
-
+watch(
+  () => layOutSettingStore.refresh,
+  () => {
+    //刷新页面
+    flag.value = !flag.value
+    nextTick(() => {
+      flag.value = !flag.value
+    })
+  },
+)
 </script>
 
 <script lang="ts">
