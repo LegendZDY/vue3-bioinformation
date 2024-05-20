@@ -5,6 +5,7 @@ const useLayOutSettingStore = defineStore('layoutSetting', {
   state: () => {
     return {
       fold: false, //侧边栏是否收起
+      refresh: false, //是否刷新页面
     }
   },
 })
