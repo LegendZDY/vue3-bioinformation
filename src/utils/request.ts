@@ -1,6 +1,8 @@
 //进行axios二次封装，统一处理请求头和错误处理
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+//引入用户相关的仓库
+import useUserStore from '@/store/modules/user'
 //第一步：创建axios实例，使用create方法，可以配置基础的请求地址和超时时间
 const request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API, // api的base_url
@@ -9,6 +11,13 @@ const request = axios.create({
 
 //第二步：请求拦截器，在请求发起前做一些处理，比如设置请求头
 request.interceptors.request.use((config) => {
+  //获取用户相关小仓库内部的token,登录成功后携带给服务器
+  const userStore = useUserStore()
+  const token = userStore.token
+
+  if (token) {
+    config.headers.token = token
+  }
   // 设置请求头, 给服务器端携带公共参数
   // config.headers['Content-Type'] = 'application/json;charset=UTF-8'
   return config
