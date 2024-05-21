@@ -17,7 +17,6 @@ onMounted(() => {
   // 获取用户信息
   userStore.userInfo()
 })
-
 </script>
 
 <style scoped lang="scss"></style>

@@ -36,13 +36,12 @@ let useUserStore = defineStore('user', {
       }
     },
     //获取用户信息的方法
-    async userInfo(){
+    async userInfo() {
       //获取用户信息,并将路由和菜单权限更新到仓库中
       const result = await reqUserInfo()
-      
-      console.log(result)
 
-    }
+      console.log(result)
+    },
   },
   getters: {},
 })
