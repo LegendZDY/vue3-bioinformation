@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>我是一级路由展示登录成功以后的页面</h1>
+    <h1>我是一级路由展示登录成功以后的页面 {{ userStore.username }}</h1>
   </div>
 </template>
 

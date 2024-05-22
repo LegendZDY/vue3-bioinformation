@@ -17,6 +17,8 @@ let useUserStore = defineStore('user', {
     return {
       token: GET_TOKEN(), //用户登录的token
       menuRoutes: constantRoutes, //仓库存储生成的路由
+      username: '', //用户名
+      avatar: '', //头像
     }
   },
   //异步|逻辑的地方
@@ -39,8 +41,10 @@ let useUserStore = defineStore('user', {
     async userInfo() {
       //获取用户信息,并将路由和菜单权限更新到仓库中
       const result = await reqUserInfo()
-
-      console.log(result)
+      if (result.code == 200) {
+        this.username = result.data.checkUser.username
+        this.avatar = result.data.checkUser.avatar
+      }
     },
   },
   getters: {},
