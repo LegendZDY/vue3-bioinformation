@@ -26,7 +26,7 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item>退出登录</el-dropdown-item>
+        <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -52,6 +52,15 @@ const fullScreen = () => {
   } else {
     document.exitFullscreen()
   }
+}
+
+//退出登录的回调函数
+const logout = () => {
+  //第一件事：需要向后端发送请求，告诉后端我要退出登录
+  //第二件事：清除本地的用户信息
+  //第三件事：跳转到登录页面
+  //第四件事：提示用户退出登录成功
+  alert('退出登录成功')
 }
 </script>
 
