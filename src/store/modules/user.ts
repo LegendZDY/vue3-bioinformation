@@ -46,6 +46,16 @@ let useUserStore = defineStore('user', {
         this.avatar = result.data.checkUser.avatar
       }
     },
+    //退出登录的方法
+    async userLogout() {
+      //清除token，清除本地存储的token，清除仓库中的路由和菜单权限，清除用户名和头像
+      this.token = ''
+      this.username = ''
+      this.avatar = ''
+      localStorage.removeItem('TOKEN')
+      return 'OK' 
+    },
+
   },
   getters: {},
 })
