@@ -7,7 +7,7 @@ import type { loginForm, loginResponseDate } from '@/api/user/type'
 //引入类型
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 //引入路由（常量路由）
 import { constantRoutes } from '@/router/routes'
 //创建用户相关的小仓库
@@ -52,10 +52,8 @@ let useUserStore = defineStore('user', {
       this.token = ''
       this.username = ''
       this.avatar = ''
-      localStorage.removeItem('TOKEN')
-      return 'OK' 
+      REMOVE_TOKEN()
     },
-
   },
   getters: {},
 })

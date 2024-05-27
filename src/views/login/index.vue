@@ -48,7 +48,7 @@
 import { User, Lock } from '@element-plus/icons-vue'
 //收集账号与密码的数据
 import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElNotification } from 'element-plus'
 //引用获取当前时间的函数
 import { getTime } from '@/utils/time'
@@ -60,6 +60,8 @@ let userStore = useUserStore()
 let loginForms = ref()
 //获取路由器
 let $router = useRouter()
+//获取路由
+let $route = useRoute()
 //定义loading状态
 const loading = ref(false)
 
@@ -83,7 +85,9 @@ const Login = async () => {
     //保证登录成功
     await userStore.userLogin(loginForm)
     //跳转到主页
-    $router.push('/')
+    //判段是否有redirect参数
+    let redirect = $route.query.redirect
+    $router.push({path: redirect || '/'})
     //提示成功信息
     ElNotification({
       type: 'success',

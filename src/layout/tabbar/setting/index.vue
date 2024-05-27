@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router'
 import useLayOutSettingStore from '@/store/modules/setting'
 const layOutSettingStore = useLayOutSettingStore()
 //刷新按钮点击回调函数
@@ -42,7 +43,11 @@ const updateRefresh = () => {
 //获取用户相关的小仓库信息
 import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()
-
+//获取当前路由对象
+let $router = useRouter()
+//获取当前路由对象
+let $route = useRoute()
+//判断当前路由是否为登录页面
 //全屏按钮点击回调函数
 const fullScreen = () => {
   //DOM对象一个属性：可以用来判断当前是否处于全屏状态，如果是，则返回true，否则返回null
@@ -60,6 +65,7 @@ const logout = () => {
   //第二件事：清除本地的用户信息
   //第三件事：跳转到登录页面
   userStore.userLogout()
+  $router.push({path:'/login', query:{redirect: $route.path}})
 }
 </script>
 
