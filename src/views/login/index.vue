@@ -87,7 +87,7 @@ const Login = async () => {
     //跳转到主页
     //判段是否有redirect参数
     let redirect = $route.query.redirect
-    $router.push({path: redirect || '/'})
+    $router.push({ path: redirect || '/' })
     //提示成功信息
     ElNotification({
       type: 'success',

@@ -65,7 +65,7 @@ const logout = () => {
   //第二件事：清除本地的用户信息
   //第三件事：跳转到登录页面
   userStore.userLogout()
-  $router.push({path:'/login', query:{redirect: $route.path}})
+  $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 </script>
 
