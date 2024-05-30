@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="" xml:lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Chapter 3 比对 | RIC-seq结题报告</title>
+    <meta name="description" content="Chapter 3 比对 | RIC-seq结题报告" />
+    <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+    <meta property="og:title" content="Chapter 3 比对 | RIC-seq结题报告" />
+    <meta property="og:type" content="book" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Chapter 3 比对 | RIC-seq结题报告" />
+
+    <meta name="author" content="" />
+
+    <meta name="date" content="2023-09-06" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="prev" href="质控.html" />
+    <link rel="next" href="全局互作分析.html" />
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+    <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+    <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+    <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+    <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+    <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+    <link
+      href="libs/gitbook-2.6.7/css/plugin-fontsettings.css"
+      rel="stylesheet"
+    />
+    <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+    <link
+      href="libs/anchor-sections-1.1.0/anchor-sections.css"
+      rel="stylesheet"
+    />
+    <link
+      href="libs/anchor-sections-1.1.0/anchor-sections-hash.css"
+      rel="stylesheet"
+    />
+    <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+
+  <body>
+    <div
+      class="book without-animation with-summary font-size-2 font-family-1"
+      data-basepath="."
+    >
+      <div class="book-summary">
+        <nav role="navigation">
+          <ul class="summary">
+            <li><a href="./">A Minimal Book Example</a></li>
+
+            <li class="divider"></li>
+            <li class="chapter" data-level="1" data-path="index.html">
+              <a href="index.html">
+                <i class="fa fa-check"></i>
+                <b>1</b>
+                产品简介
+              </a>
+              <ul>
+                <li class="chapter" data-level="1.1" data-path="index.html">
+                  <a href="index.html#ric-seq测序原理">
+                    <i class="fa fa-check"></i>
+                    <b>1.1</b>
+                    RIC-seq测序原理
+                  </a>
+                </li>
+                <li class="chapter" data-level="1.2" data-path="index.html">
+                  <a href="index.html#生物信息学分析流程图">
+                    <i class="fa fa-check"></i>
+                    <b>1.2</b>
+                    生物信息学分析流程图
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="2" data-path="质控.html">
+              <a href="质控.html">
+                <i class="fa fa-check"></i>
+                <b>2</b>
+                质控
+              </a>
+              <ul>
+                <li class="chapter" data-level="2.1" data-path="质控.html">
+                  <a href="质控.html#测序数据格式">
+                    <i class="fa fa-check"></i>
+                    <b>2.1</b>
+                    测序数据格式
+                  </a>
+                </li>
+                <li class="chapter" data-level="2.2" data-path="质控.html">
+                  <a href="质控.html#测序数据过滤">
+                    <i class="fa fa-check"></i>
+                    <b>2.2</b>
+                    测序数据过滤
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="3" data-path="比对.html">
+              <a href="比对.html">
+                <i class="fa fa-check"></i>
+                <b>3</b>
+                比对
+              </a>
+              <ul>
+                <li class="chapter" data-level="3.1" data-path="比对.html">
+                  <a href="比对.html#rrna序列比对">
+                    <i class="fa fa-check"></i>
+                    <b>3.1</b>
+                    rRNA序列比对
+                  </a>
+                </li>
+                <li class="chapter" data-level="3.2" data-path="比对.html">
+                  <a href="比对.html#基因组序列比对">
+                    <i class="fa fa-check"></i>
+                    <b>3.2</b>
+                    基因组序列比对
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="4" data-path="全局互作分析.html">
+              <a href="全局互作分析.html">
+                <i class="fa fa-check"></i>
+                <b>4</b>
+                全局互作分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="4.1"
+                  data-path="全局互作分析.html"
+                >
+                  <a href="全局互作分析.html#每个样本的互作鉴定分析">
+                    <i class="fa fa-check"></i>
+                    <b>4.1</b>
+                    每个样本的互作鉴定分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="4.2"
+                  data-path="全局互作分析.html"
+                >
+                  <a href="全局互作分析.html#全局互作统计">
+                    <i class="fa fa-check"></i>
+                    <b>4.2</b>
+                    全局互作统计
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li
+              class="chapter"
+              data-level="5"
+              data-path="rna-rna互作差异分析.html"
+            >
+              <a href="rna-rna互作差异分析.html">
+                <i class="fa fa-check"></i>
+                <b>5</b>
+                RNA-RNA互作差异分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="5.1"
+                  data-path="rna-rna互作差异分析.html"
+                >
+                  <a href="rna-rna互作差异分析.html#差异分析">
+                    <i class="fa fa-check"></i>
+                    <b>5.1</b>
+                    差异分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="5.2"
+                  data-path="rna-rna互作差异分析.html"
+                >
+                  <a href="rna-rna互作差异分析.html#差异基因热图">
+                    <i class="fa fa-check"></i>
+                    <b>5.2</b>
+                    差异基因热图
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="5.3"
+                  data-path="rna-rna互作差异分析.html"
+                >
+                  <a href="rna-rna互作差异分析.html#火山图">
+                    <i class="fa fa-check"></i>
+                    <b>5.3</b>
+                    火山图
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li
+              class="chapter"
+              data-level="6"
+              data-path="差异基因富集分析.html"
+            >
+              <a href="差异基因富集分析.html">
+                <i class="fa fa-check"></i>
+                <b>6</b>
+                差异基因富集分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="6.1"
+                  data-path="差异基因富集分析.html"
+                >
+                  <a href="差异基因富集分析.html#差异基因go富集分析">
+                    <i class="fa fa-check"></i>
+                    <b>6.1</b>
+                    差异基因GO富集分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="6.2"
+                  data-path="差异基因富集分析.html"
+                >
+                  <a href="差异基因富集分析.html#差异基因kegg分析">
+                    <i class="fa fa-check"></i>
+                    <b>6.2</b>
+                    差异基因KEGG分析
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="7" data-path="hubrna鉴定分析.html">
+              <a href="hubrna鉴定分析.html">
+                <i class="fa fa-check"></i>
+                <b>7</b>
+                HubRNA鉴定分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="7.1"
+                  data-path="hubrna鉴定分析.html"
+                >
+                  <a href="hubrna鉴定分析.html#联合rna-seq进行hubrna鉴定">
+                    <i class="fa fa-check"></i>
+                    <b>7.1</b>
+                    联合RNA-seq进行hubRNA鉴定
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="7.2"
+                  data-path="hubrna鉴定分析.html"
+                >
+                  <a href="hubrna鉴定分析.html#hubrna表达量分布">
+                    <i class="fa fa-check"></i>
+                    <b>7.2</b>
+                    hubRNA表达量分布
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="8" data-path="hubrna差异分析.html">
+              <a href="hubrna差异分析.html">
+                <i class="fa fa-check"></i>
+                <b>8</b>
+                hubRNA差异分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="8.1"
+                  data-path="hubrna差异分析.html"
+                >
+                  <a href="hubrna差异分析.html#差异分析-1">
+                    <i class="fa fa-check"></i>
+                    <b>8.1</b>
+                    差异分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="8.2"
+                  data-path="hubrna差异分析.html"
+                >
+                  <a href="hubrna差异分析.html#差异基因热图-1">
+                    <i class="fa fa-check"></i>
+                    <b>8.2</b>
+                    差异基因热图
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="8.3"
+                  data-path="hubrna差异分析.html"
+                >
+                  <a href="hubrna差异分析.html#火山图-1">
+                    <i class="fa fa-check"></i>
+                    <b>8.3</b>
+                    火山图
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="9" data-path="hubrna富集分析.html">
+              <a href="hubrna富集分析.html">
+                <i class="fa fa-check"></i>
+                <b>9</b>
+                hubRNA富集分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="9.1"
+                  data-path="hubrna富集分析.html"
+                >
+                  <a href="hubrna富集分析.html#hubrna的go富集分析">
+                    <i class="fa fa-check"></i>
+                    <b>9.1</b>
+                    hubRNA的GO富集分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="9.2"
+                  data-path="hubrna富集分析.html"
+                >
+                  <a href="hubrna富集分析.html#hubrna的kegg分析">
+                    <i class="fa fa-check"></i>
+                    <b>9.2</b>
+                    hubRNA的KEGG分析
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="chapter" data-level="10" data-path="基序分析.html">
+              <a href="基序分析.html">
+                <i class="fa fa-check"></i>
+                <b>10</b>
+                基序分析
+              </a>
+            </li>
+            <li
+              class="chapter"
+              data-level="11"
+              data-path="erna-uarna互作分析.html"
+            >
+              <a href="erna-uarna互作分析.html">
+                <i class="fa fa-check"></i>
+                <b>11</b>
+                eRNA-uaRNA互作分析
+              </a>
+              <ul>
+                <li
+                  class="chapter"
+                  data-level="11.1"
+                  data-path="erna-uarna互作分析.html"
+                >
+                  <a href="erna-uarna互作分析.html#erna-uarna互作简介">
+                    <i class="fa fa-check"></i>
+                    <b>11.1</b>
+                    eRNA-uaRNA互作简介
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="11.2"
+                  data-path="erna-uarna互作分析.html"
+                >
+                  <a
+                    href="erna-uarna互作分析.html#erna-uarna互作靶基因go富集分析"
+                  >
+                    <i class="fa fa-check"></i>
+                    <b>11.2</b>
+                    eRNA-uaRNA互作靶基因GO富集分析
+                  </a>
+                </li>
+                <li
+                  class="chapter"
+                  data-level="11.3"
+                  data-path="erna-uarna互作分析.html"
+                >
+                  <a
+                    href="erna-uarna互作分析.html#erna-uarna互作靶基因kegg分析"
+                  >
+                    <i class="fa fa-check"></i>
+                    <b>11.3</b>
+                    eRNA-uaRNA互作靶基因KEGG分析
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li
+              class="chapter"
+              data-level="12"
+              data-path="特定基因互作分析.html"
+            >
+              <a href="特定基因互作分析.html">
+                <i class="fa fa-check"></i>
+                <b>12</b>
+                特定基因互作分析
+              </a>
+            </li>
+            <li class="chapter" data-level="13" data-path="参考文章.html">
+              <a href="参考文章.html">
+                <i class="fa fa-check"></i>
+                <b>13</b>
+                参考文章
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="https://github.com/rstudio/bookdown" target="blank">
+                Published with bookdown
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="book-body">
+        <div class="body-inner">
+          <div class="book-header" role="navigation">
+            <h1>
+              <i class="fa fa-circle-o-notch fa-spin"></i>
+              <a href="./">RIC-seq结题报告</a>
+            </h1>
+          </div>
+
+          <div class="page-wrapper" tabindex="-1" role="main">
+            <div class="page-inner">
+              <section class="normal" id="section-">
+                <div id="比对" class="section level1 hasAnchor" number="3">
+                  <h1>
+                    <span class="header-section-number">Chapter 3</span>
+                    比对
+                    <a
+                      href="比对.html#比对"
+                      class="anchor-section"
+                      aria-label="Anchor link to header"
+                    ></a>
+                  </h1>
+                  <div
+                    id="rrna序列比对"
+                    class="section level2 hasAnchor"
+                    number="3.1"
+                  >
+                    <h2>
+                      <span class="header-section-number">3.1</span>
+                      rRNA序列比对
+                      <a
+                        href="比对.html#rrna序列比对"
+                        class="anchor-section"
+                        aria-label="Anchor link to header"
+                      ></a>
+                    </h2>
+                    <p>
+                      我们采用STAR program
+                      (v020201)对过滤后的测序序列进行rRNA序列比对的比对分析：
+                    </p>
+                    <pre><code>## 结果文件:1.qc_map/*_rRNA_map_stat.xls</code></pre>
+                    <table
+                      class="table"
+                      style="margin-left: auto; margin-right: auto"
+                    >
+                      <caption>
+                        <span id="tab:unnamed-chunk-6">Table 3.1:</span>
+                        数据比对统计表
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th style="text-align: center">sample</th>
+                          <th style="text-align: center">Reads number</th>
+                          <th style="text-align: center">length</th>
+                          <th style="text-align: center">
+                            Uniquely mapped reads
+                          </th>
+                          <th style="text-align: center">
+                            Uniquely mapped rate
+                          </th>
+                          <th style="text-align: center">
+                            unmapped too short rate
+                          </th>
+                          <th style="text-align: center">
+                            unmapped other rate
+                          </th>
+                          <th style="text-align: center">chimeric reads</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="text-align: center">
+                            C2C12-1_read1_torRNA
+                          </td>
+                          <td style="text-align: center">169294380</td>
+                          <td style="text-align: center">128</td>
+                          <td style="text-align: center">14671407</td>
+                          <td style="text-align: center">8.67%</td>
+                          <td style="text-align: center">49.47%</td>
+                          <td style="text-align: center">41.49%</td>
+                          <td style="text-align: center">0.38%</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">
+                            C2C12-1_read2_torRNA
+                          </td>
+                          <td style="text-align: center">161845055</td>
+                          <td style="text-align: center">135</td>
+                          <td style="text-align: center">12867149</td>
+                          <td style="text-align: center">7.95%</td>
+                          <td style="text-align: center">47.73%</td>
+                          <td style="text-align: center">44.13%</td>
+                          <td style="text-align: center">0.40%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <ol style="list-style-type: decimal">
+                      <li>sample:样品名称。</li>
+                      <li>Reads number:统计原始序列数据。</li>
+                      <li>length:reads平均长度。</li>
+                      <li>Uniquely mapped reads:比对上的reads。</li>
+                      <li>Uniquely mapped rate:比对上的reads的比对率。</li>
+                      <li>
+                        unmapped too short
+                        rate:由于序列太短，未比对上序列的比率。
+                      </li>
+                      <li>unmapped other rate:其他为比对上序列的比率。</li>
+                      <li>chimeric reads:嵌合序列比对率。</li>
+                    </ol>
+                  </div>
+                  <div
+                    id="基因组序列比对"
+                    class="section level2 hasAnchor"
+                    number="3.2"
+                  >
+                    <h2>
+                      <span class="header-section-number">3.2</span>
+                      基因组序列比对
+                      <a
+                        href="比对.html#基因组序列比对"
+                        class="anchor-section"
+                        aria-label="Anchor link to header"
+                      ></a>
+                    </h2>
+                    <p>
+                      我们采用STAR program
+                      (v020201)对过滤后的测序序列进行参考基因组的比对分析：
+                    </p>
+                    <pre><code>## 结果文件:1.qc_map/*_Genome_map_stat.xls</code></pre>
+                    <table
+                      class="table"
+                      style="margin-left: auto; margin-right: auto"
+                    >
+                      <caption>
+                        <span id="tab:unnamed-chunk-7">Table 3.2:</span>
+                        数据比对统计表
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th style="text-align: center">Sample</th>
+                          <th style="text-align: center">
+                            Number of input reads
+                          </th>
+                          <th style="text-align: center">
+                            Average input read length
+                          </th>
+                          <th style="text-align: center">
+                            Uniquely mapped reads
+                          </th>
+                          <th style="text-align: center">
+                            of reads unmapped too short
+                          </th>
+                          <th style="text-align: center">
+                            of reads unmapped other
+                          </th>
+                          <th style="text-align: center">of chimeric reads</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="text-align: center">C2C12-1_read1</td>
+                          <td style="text-align: center">153999807</td>
+                          <td style="text-align: center">128</td>
+                          <td style="text-align: center">45.22%</td>
+                          <td style="text-align: center">43.18%</td>
+                          <td style="text-align: center">0.75%</td>
+                          <td style="text-align: center">4.21%</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">C2C12-1_read2</td>
+                          <td style="text-align: center">148665388</td>
+                          <td style="text-align: center">136</td>
+                          <td style="text-align: center">41.66%</td>
+                          <td style="text-align: center">47.98%</td>
+                          <td style="text-align: center">0.73%</td>
+                          <td style="text-align: center">2.61%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <ol style="list-style-type: decimal">
+                      <li>sample:样品名称。</li>
+                      <li>Reads number:统计原始序列数据。</li>
+                      <li>length:reads平均长度。</li>
+                      <li>Uniquely mapped reads:比对上的reads。</li>
+                      <li>Uniquely mapped rate:比对上的reads的比对率。</li>
+                      <li>
+                        unmapped too short
+                        rate:由于序列太短，未比对上序列的比率。
+                      </li>
+                      <li>unmapped other rate:其他为比对上序列的比率。</li>
+                      <li>chimeric reads:嵌合序列比对率。</li>
+                    </ol>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <a
+          href="质控.html"
+          class="navigation navigation-prev"
+          aria-label="Previous page"
+        >
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a
+          href="全局互作分析.html"
+          class="navigation navigation-next"
+          aria-label="Next page"
+        >
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+    <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+    <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+    <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+    <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+    <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+    <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+    <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+    <script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+    <script>
+      gitbook.require(['gitbook'], function (gitbook) {
+        gitbook.start({
+          sharing: {
+            github: false,
+            facebook: true,
+            twitter: true,
+            linkedin: false,
+            weibo: false,
+            instapaper: false,
+            vk: false,
+            whatsapp: false,
+            all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper'],
+          },
+          fontsettings: {
+            theme: 'white',
+            family: 'sans',
+            size: 2,
+          },
+          edit: {
+            link: 'https://github.com/USERNAME/REPO/edit/BRANCH/02-mapping.Rmd',
+            text: 'Edit',
+          },
+          history: {
+            link: null,
+            text: null,
+          },
+          view: {
+            link: null,
+            text: null,
+          },
+          download: ['_main.pdf', '_main.epub'],
+          search: {
+            engine: 'fuse',
+            options: null,
+          },
+          toc: {
+            collapse: 'subsection',
+          },
+        })
+      })
+    </script>
+  </body>
+</html>
