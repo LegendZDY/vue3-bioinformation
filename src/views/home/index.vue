@@ -1,6 +1,11 @@
 <template>
   <div class="home-container">
-    <iframe src="_book/index.html" ref="iframe" width="50%" height="100px"></iframe>
+    <iframe
+      src="_book/index.html"
+      ref="iframe"
+      width="50%"
+      height="100px"
+    ></iframe>
   </div>
 </template>
 
