@@ -41,6 +41,7 @@ app.use(pinia)
 //     password: '111111',
 //   },
 // })
-
+//引用路由鉴权文件
+import './permisstion'
 // 挂载应用挂载到挂载点上
 app.mount('#app')
