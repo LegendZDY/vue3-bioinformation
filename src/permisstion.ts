@@ -11,7 +11,8 @@ import setting from './setting'
 const userStore = useUserStore(pinia)
 //全局路由前置守卫
 router.beforeEach(async (to, from, next) => {
-  document.title = `${setting.title} - ${to.meta.title}` || 'Vue3-Bioinformation'
+  document.title =
+    `${setting.title} - ${to.meta.title}` || 'Vue3-Bioinformation'
   // 访问某一个路由之前会触发的一个钩子
   // to: 即将要进入的目标  from: 当前导航正要离开的路由
   // next: 是一个函数，表示放行，如果调用 next() 则会继续向下执行，如果调用 next(false) 则会取消本次导航

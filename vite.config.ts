@@ -42,13 +42,15 @@ export default defineConfig(({ command, mode }) => {
     },
     //代理跨域
     server: {
-    proxy: {
-      [env.VITE_API_BASE_URL]: {
-        target: 'http://localhost:8080',
-        //需要代理跨域
-        changeOrigin: true,
-        //路径重启
-        rewrite: (path) => path.replace(/^\/api/, ''),
+      proxy: {
+        [env.VITE_API_BASE_URL]: {
+          target: 'http://localhost:8080',
+          //需要代理跨域
+          changeOrigin: true,
+          //路径重启
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
       },
+    },
   }
 })
